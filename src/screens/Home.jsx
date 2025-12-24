@@ -3,21 +3,20 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import AllItems from './AllItems';
 import Create from './Create';
 
-const storeItems = [
-  { id: 1, name: 'Rice', stock: 200, unit: 'kg' },
-  { id: 2, name: 'Wheat Flour (Atta)', stock: 150, unit: 'kg' },
-  { id: 3, name: 'Cooking Oil', stock: 90, unit: 'liters' },
-  { id: 4, name: 'Sugar', stock: 18, unit: 'kg' },
-  { id: 5, name: 'Salt', stock: 100, unit: 'kg' },
-  { id: 6, name: 'Milk', stock: 60, unit: 'liters' },
-  { id: 7, name: 'Eggs', stock: 500, unit: 'pieces' },
-  { id: 8, name: 'Bread', stock: 80, unit: 'loaves' },
-  { id: 9, name: 'Tea', stock: 10, unit: 'packs' },
-  { id: 10, name: 'Lentils (Dal)', stock: 110, unit: 'kg' },
-];
-
 const Home = () => {
   const [view, setView] = useState(0);
+  const [storeItems, setStoreItems] = useState([
+    { id: 1, name: 'Rice', stock: 200, unit: 'kg' },
+    { id: 2, name: 'Wheat Flour (Atta)', stock: 150, unit: 'kg' },
+    { id: 3, name: 'Cooking Oil', stock: 90, unit: 'liters' },
+    { id: 4, name: 'Sugar', stock: 18, unit: 'kg' },
+    { id: 5, name: 'Salt', stock: 100, unit: 'kg' },
+    { id: 6, name: 'Milk', stock: 60, unit: 'liters' },
+    { id: 7, name: 'Eggs', stock: 500, unit: 'pieces' },
+    { id: 8, name: 'Bread', stock: 80, unit: 'loaves' },
+    { id: 9, name: 'Tea', stock: 10, unit: 'packs' },
+    { id: 10, name: 'Lentils (Dal)', stock: 110, unit: 'kg' },
+  ]);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Dashboard</Text>
@@ -67,7 +66,7 @@ const Home = () => {
       {view === 1 && (
         <AllItems data={storeItems.filter(item => item.stock < 20)} />
       )}
-      {view === 2 && <Create />}
+      {view === 2 && <Create data={storeItems} setData={setStoreItems} />}
     </View>
   );
 };
