@@ -64,7 +64,9 @@ const Home = () => {
       </View>
 
       {view === 0 && <AllItems data={storeItems} />}
-      {view === 1 && <AllItems />}
+      {view === 1 && (
+        <AllItems data={storeItems.filter(item => item.stock < 20)} />
+      )}
       {view === 2 && <Create />}
     </View>
   );
